@@ -7,6 +7,7 @@ class Stat(object):
 		self.label = label
 		self.unit = unit
 
+# TODO: refactor all these averaging functions into one function
 
 def get_avg_time(activities, time_type):
 	times = []

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}dashboard{% endblock %}
+
+{% block signin_info %}
+	Signed in as {{ athlete.firstname }} {{ athlete.lastname }}
+{% endblock %}
+
+{% block content %}
+	{% for set in activity_sets %}
+		{% if set.activities|length > 0 %}
+			<div class="row"><h2>{{ set.activity_type }}</h2></div>
+			<div class="row">
+				<div id="activities" class="col-md-6">
+					<div class="row">
+						<h3>Activities</h3>
+					</div>
+					{% for activity in set.activities %}
+						<div class="row">
+							<div class="col-md-12">{{ activity.name }}</div>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="col-md-6">
+					<div class="row">
+						<h3>Activity Stats</h3>
+					</div>
+					{% for stat in set.stats %}
+						<div class="row">
+							<div class="col-md-12">
+								<span class="stat-title">{{ stat.label }}:</span> {{ stat.stat }} {{ stat.unit }}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endblock %}
+
+{% block time_period_chooser_test %}
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="time_period_chooser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	{% block head %}
+	<link rel="stylesheet" href="static/css/style.css">
+	<link rel="stylesheet" href="static/css/bootstrap.min.css">
+	<title>strava facts - {% block title %}{% endblock %}</title>
+	{% endblock %}
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	      	strava facts
+	      </a>
+	    </div>
+	    {% block time_period_chooser %}{% endblock %}
+		<p class="navbar-text navbar-right">{% block signin_info %}{% endblock %}</p>
+	  </div>
+	</nav>
+	<div class="container">{% block content %}{% endblock %}</div>
+	<div id="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+</html>
