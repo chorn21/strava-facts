@@ -28,7 +28,7 @@
 					{% for stat in set.stats %}
 						<div class="row">
 							<div class="col-md-12">
-								<span class="stat-title">{{ stat.label }}:</span> {{ stat.stat }} {{ stat.unit }}
+								<span class="stat-title">{{ stat.label }}:</span> {{ stat.stat }} {{ stat.unit }} {% if 'time' in stat.name %}({{ stat.stat/60 }} hour{% if stat.stat/60 != 1 %}s{% endif %}){% endif %}
 							</div>
 						</div>
 					{% endfor %}

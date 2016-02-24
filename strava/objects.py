@@ -1,13 +1,5 @@
 from analysis import stats
 
-class ActivityList(StravaObject):
-
-	def __init__(self, client):
-		self.data_obj = client.get_activities()
-		self.activities = []
-		for activity in self.data_obj:
-			self.activities.append(Activity(data_obj=activity))
-
 
 class ActivitySet(object):
 

@@ -4,12 +4,13 @@ from strava.objects import ActivitySet
 import toolkit
 import datetime
 import dateutil.relativedelta
+import creds
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-	client_id = None # add id
+	client_id = creds.client_id # add id
 	redirect_uri = 'http://localhost:5000/authorized'
 	url = 'https://www.strava.com/oauth/authorize?client_id=%s&redirect_uri=%s&response_type=code' % (client_id, redirect_uri)
 	return render_template('login.html', strava_login_url=url)
@@ -19,7 +20,7 @@ def authorized():
 	# get access token to make requests
 	client = Client()
 	code = request.args.get('code')
-	client.access_token = client.exchange_code_for_token(client_id=None, client_secret=None, code=code) # add id and secret
+	client.access_token = client.exchange_code_for_token(client_id=creds.client_id, client_secret=creds.client_secret, code=code) # add id and secret
 
 	# get data
 	today = datetime.datetime.strptime(str(datetime.date.today()), "%Y-%m-%d")

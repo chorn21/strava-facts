@@ -44,6 +44,6 @@ def get_avg_temp(activities):
 	if len(temps) > 0:
 		print len(temps)
 		print sum(temps)
-		avg_temp = sum(temps)/len(temps)
-	unit = 'degree Celsius' if avg_temp == 1 else 'degrees Celsius'
+		avg_temp = sum(temps)/len(temps) * 1.8 + 32
+	unit = 'degree Fahrenheit' if avg_temp == 1 else 'degrees Fahrenheit'
 	return Stat(avg_temp, 'avg_temp', 'Average activity temperature', unit)
